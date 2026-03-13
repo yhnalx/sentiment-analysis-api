@@ -3,19 +3,17 @@ import shutil
 import zipfile
 import gdown
 
-# Render persistent disk mount path
-BASE_DIR = "/opt/render/project/model_storage"
+# Local app storage (works without Render persistent disk)
+BASE_DIR = "."
 MODEL_DIR = os.path.join(BASE_DIR, "sentiment_model")
 ZIP_PATH = os.path.join(BASE_DIR, "sentiment_model.zip")
 TEMP_EXTRACT_DIR = os.path.join(BASE_DIR, "_extract_tmp")
 
-# Replace this with your real Google Drive file ID
 DRIVE_FILE_ID = "1WxIA4jhBU987_uMXi8ri6mAQL2AX_nEC"
-
 DOWNLOAD_URL = f"https://drive.google.com/uc?id={DRIVE_FILE_ID}"
 
 
-def model_ready(model_dir: str) -> bool:
+def model_ready(model_dir):
     required_files = [
         "config.json",
         "tokenizer_config.json"
@@ -32,7 +30,7 @@ def clean_temp():
         os.remove(ZIP_PATH)
 
 
-def find_model_dir(root_dir: str) -> str | None:
+def find_model_dir(root_dir):
     """
     Find the extracted sentiment_model folder, even if the zip created nested folders.
     """
