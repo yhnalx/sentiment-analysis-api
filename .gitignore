@@ -1,0 +1,15 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+sentiment_model/
+sentiment_model.zip
+results/
+checkpoints/
+
+*.csv
+*.bin
+*.safetensors
+*.pt
+*.pth
