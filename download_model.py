@@ -10,7 +10,7 @@ ZIP_PATH = os.path.join(BASE_DIR, "sentiment_model.zip")
 TEMP_EXTRACT_DIR = os.path.join(BASE_DIR, "_extract_tmp")
 
 # Replace this with your real Google Drive file ID
-DRIVE_FILE_ID = "184xvG0SMIUjX8FkyqeAfoiXql8dZ17W5"
+DRIVE_FILE_ID = "1WxIA4jhBU987_uMXi8ri6mAQL2AX_nEC"
 
 DOWNLOAD_URL = f"https://drive.google.com/uc?id={DRIVE_FILE_ID}"
 
