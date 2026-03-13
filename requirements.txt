@@ -3,3 +3,6 @@ uvicorn
 torch
 transformers
 pydantic
+gdown
+safetensors
+numpy
