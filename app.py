@@ -3,11 +3,11 @@ import re
 import numpy as np
 import torch
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
-# Render persistent disk mount path
-MODEL_DIR = "sentiment_model"
+MODEL_DIR = "./sentiment_model"
 
 ID2LABEL = {
     0: "negative",
@@ -16,6 +16,18 @@ ID2LABEL = {
 }
 
 app = FastAPI(title="Twitter Sentiment Analysis API")
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5500",
+        "http://127.0.0.1:5500"
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
